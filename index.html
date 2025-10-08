@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VH-Delivers Savings Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            padding: 30px;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        .subtext {
+            text-align: center;
+            font-size: 0.9em;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            width: 100%;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        h2 {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><strong>VH-Delivers Savings Calculator</strong></h1>
+        <p class="subtext">See exactly how much you could save by switching to VH-Delivers</p>
+
+        <label for="currentFee">Current Delivery Fee (%)</label>
+        <input type="number" id="currentFee" value="30">
+
+        <label for="monthlySales">Monthly Sales ($)</label>
+        <input type="number" id="monthlySales" value="10000">
+
+        <button onclick="calculateSavings()">Calculate Savings</button>
+
+        <h2>Results</h2>
+        <p id="monthlyResult">Monthly Savings: $0</p>
+        <p id="yearlyResult">Yearly Savings: $0</p>
+    </div>
+
+    <script>
+        function calculateSavings() {
+            const currentFee = parseFloat(document.getElementById("currentFee").value);
+            const monthlySales = parseFloat(document.getElementById("monthlySales").value);
+
+            const vhDeliversFee = 15; // 15% assumed
+            const monthlySavings = (currentFee - vhDeliversFee) / 100 * monthlySales;
+            const yearlySavings = monthlySavings * 12;
+
+            document.getElementById("monthlyResult").innerText = "Monthly Savings: $" + monthlySavings.toFixed(2);
+            document.getElementById("yearlyResult").innerText = "Yearly Savings: $" + yearlySavings.toFixed(2);
+        }
+    </script>
+</body>
+</html>
